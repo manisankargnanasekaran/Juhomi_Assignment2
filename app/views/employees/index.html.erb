@@ -1,0 +1,71 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<div class="card-header">
+
+<h3>Employees List's 
+   <%= link_to 'Add New', new_employee_path, class: "btn btn-success pull-right"%>
+</h3>
+</div>
+
+
+<!-- <h1>Employees</h1> -->
+
+<table id="customer_index" class="table display table-hover table-striped display" cellspacing="0" width="90%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Designation</th>
+      <th colspan="2"> Actions </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.age %></td>
+        <%if employee.gender == true %>
+         <td>Male</td>
+        <%else%>
+         <td>Female</td>
+        <%end%>
+        
+        <td><%= employee.designation %></td>
+        <!-- <td><!%= link_to 'Show', employee %></td> -->
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--  <!%= link_to 'New Employee', new_employee_path %>
+ -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+   $("#customer_index").DataTable();
+  //$(".dataTables_wrapper").find(".row")
+  // $(".dataTables_wrapper").find("*").each(function()
+  // {
+    // $('.row').css("width","100%");
+  // });
+  
+// });
+});
+// $("#customer_index").dataTable({
+
+//    "scrollY": "50vh",
+//         "scrollX": true,
+//     columnDefs: [
+//     //{ orderable: false, targets: -2 }
+//      //{ orderable: false, targets: -1 }
+
+// ]
+//   });
+
+    </script>
